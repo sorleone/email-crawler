@@ -70,9 +70,7 @@ function WebsiteEmailScraper (domain) {
         rp({url : websiteQueue[i], headers : {'User-Agent' : 'request'}}).then((htmlString) => {
           parser = new HtmlParser(htmlString, domain);
           newLinks = newLinks.concat(parser.extractLinks());
-          console.log("num liinks: " + newLinks.length);
           emails = emails.concat(parser.extractEmails());
-
         })
         .catch((e) => {
           throw new Error("Error with rp: " + e);
